@@ -1,0 +1,59 @@
+@model EventsWeb.Models.Register
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div>
+    <h4>Detalles del registro</h4>
+    <hr />
+    <dl class="row">     
+      
+        <dt class = "col-sm-2">
+            Nombre
+        </dt>
+        <dd class = "col-sm-10">
+            @string.Format("{0} {1} {2}", Model.IduserNavigation.Name, Model.IduserNavigation.Lastname,Model.IduserNavigation.Surname)
+        </dd>
+        <dt class = "col-sm-2">
+            Email
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IduserNavigation.Email)
+        </dd>
+        @if(Model.IduserNavigation.Userinfo != null){
+        <dt class = "col-sm-2">
+            Fecha de nacimiento
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IduserNavigation.Userinfo.Dob)
+        </dd>
+        <dt class = "col-sm-2">
+            Genero
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IduserNavigation.Userinfo.IdgenderNavigation.Description)
+        </dd>        
+        }
+         @if(Model.Documents != null && Model.Documents.Any()){
+             <dd class = "col-sm-12" style="font-weight: bold;">Archivos cargados por el usuario</dd>
+             foreach (var item in Model.Documents)
+             {
+                  <dt class = "col-sm-2">
+                    <a href="/Register/GetFileResult?documentId=@item.Iddocument">@item.Description</a>
+                  </dt>
+             }
+         }
+    </dl>
+     <form asp-action="Valid">
+            
+            <input type="hidden" name="id" value="@Model.Idregister"/>
+            <div class="form-group">
+                <input type="submit" value="Validar" class="btn btn-primary" />
+            </div>
+        </form>
+</div>
+<div>
+    
+    <a asp-action="Index">Regresar a la lista</a>
+</div>

@@ -1,0 +1,53 @@
+@model IEnumerable<EventsWeb.Models.Eventschedule>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Datestart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dateend)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdeventNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IduserNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Datestart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dateend)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdeventNavigation.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IduserNavigation.Email)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Ideventschedule">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Ideventschedule">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Ideventschedule">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

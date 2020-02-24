@@ -1,0 +1,82 @@
+@model EventsWeb.Models.User
+
+@{
+    ViewData["Title"] = "Create";
+}
+<!--===============================================================================================-->
+<script src="/lib/jquery/dist/jquery.js" type="text/javascript"></script>
+<script src="/lib/jquery-validation/dist/jquery.validate.js" type="text/javascript"></script>
+<script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="/css/util.css">
+<link rel="stylesheet" type="text/css" href="/css/form.css">
+<!--===============================================================================================-->
+
+<hr />
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <form  class="login100-form validate-form" asp-action="Create" enctype="multipart/form-data">
+                <span class="login100-form-title p-b-26">Registro de usuarios</span>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label class="control-label">Nombre</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Apellido Paterno</label>
+                    <input asp-for="Lastname" class="form-control" />
+                    <span asp-validation-for="Lastname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Apellido Materno</label>
+                    <input asp-for="Surname" class="form-control" />
+                    <span asp-validation-for="Surname" class="text-danger"></span>
+                </div>          
+                <div class="form-group">
+                    <label class="control-label">Email</label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Ciudad</label>
+                    <input name="city"  class ="form-control" multiple/>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input type="password" asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label  class="control-label">Estado</label>
+                    <select name="idstate" class ="form-control" asp-items="ViewBag.Idstate"></select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Genero</label>
+                    <select name="idgender" class ="form-control" asp-items="ViewBag.Idgender"></select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Fecha de nacimiento</label>
+                    <input name="dob" type="date" class ="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Archivos de validacion</label>
+                    <input name="files" type="file" class ="form-control" multiple/>
+                </div>
+               <div class="container-login100-form-btn">
+							<div class="wrap-login100-form-btn">
+								<div class="login100-form-bgbtn"></div>
+								<button class="login100-form-btn">
+									Registrar
+								</button>
+							</div>
+						</div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

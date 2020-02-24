@@ -1,0 +1,9 @@
+dotnet ef dbcontext scaffold "Host=localhost;Database=events;Username=events;Password=12345" Npgsql.EntityFrameworkCore.PostgreSQL --output-dir Models
+
+
+ dotnet ef dbcontext scaffold "Host=localhost;Database=events;Username=events;Password=12345" Npgsql.EntityFrameworkCore.PostgreSQL -o DB --project .\EventAPI.Data.csproj --startup-project ..\EventsAPI\EventsAPI.csproj
+
+
+ dotnet aspnet-codegenerator --project EventsWeb.csproj controller --force --controllerName UserController --model EventsWeb.Models.User --dataContext EventsWeb.Models.eventsContext --relativeFolderPath Controllers --controllerNamespace EventsWeb.Controllers –useDefaultLayout
+
+ dotnet aspnet-codegenerator --project EventsWeb.csproj controller --force --controllerName EventScheduleController --model EventsWeb.Models.Eventschedule --dataContext EventsWeb.Models.eventsContext --relativeFolderPath Controllers --controllerNamespace EventsWeb.Controllers --useDefaultLayout

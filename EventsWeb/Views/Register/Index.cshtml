@@ -1,0 +1,56 @@
+@model IEnumerable<EventsWeb.Models.Register>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de usuarios registrados por validar</h1>
+
+ @if(Model.Any())
+{
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               IdUser
+            </th>
+             <th>
+               Nombre
+            </th>
+             <th>
+                Email
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+       
+            @foreach (var item in Model) {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IduserNavigation.Iduser)
+                        </td>
+                        <td>
+                            @string.Format("{0} {1} {2} ",item.IduserNavigation.Name, item.IduserNavigation.Lastname, item.IduserNavigation.Surname )
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IduserNavigation.Email)
+                        </td>
+                        <td>
+                            
+                            <a asp-action="Details" asp-route-id="@item.Idregister">Detalles</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Idregister">Borrar</a>
+                        </td>
+                    </tr>
+            }
+       
+    </tbody>
+</table>
+ }else{
+     <div class="row">
+        <div class="col-md-4">
+                <h2>No hay usuarios por validar</h2>
+        </div>
+    </div>
+ }
